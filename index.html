@@ -2,32 +2,74 @@
 <html lang="th">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Real-Time Translator · Microphone Test</title>
+<title>Real-Time Translator · Thai Translation</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f2f5fb;color:#20314b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:22px 15px 50px}.wrap{max-width:650px;margin:auto}h1{text-align:center;color:#2563d9;font-size:26px;margin:16px 0 5px}.sub{text-align:center;color:#687b95;margin-bottom:22px}.card{background:white;padding:20px;border-radius:17px;box-shadow:0 3px 15px #182b490a;margin:14px 0}h3{margin:0 0 14px}.langs,.actions{display:flex;gap:10px}.langs label{flex:1;border:2px solid #dce5f3;border-radius:12px;padding:13px 7px;text-align:center}.langs label:has(input:checked){background:#edf3ff;border-color:#2563d9}button{border:0;border-radius:11px;padding:14px 12px;font:inherit;font-weight:600;cursor:pointer}button:disabled{opacity:.5}.actions button{flex:1}.primary{background:#2563d9;color:white}.stop{background:#d83d3d;color:white}.test{background:#e8efff;color:#2459b9;width:100%;margin-top:13px}.panel{background:#f5f8ff;border-radius:12px;padding:15px;min-height:90px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}.status{font-size:14px;color:#556b87;line-height:1.6;margin-top:14px;overflow-wrap:anywhere}.note{color:#75849a;font-size:13px;line-height:1.6}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#aab5c4;margin-right:6px}.dot.on{background:#18a66a}.footer{text-align:center;color:#7a8a9e;font-size:12px;margin-top:20px}
+*{box-sizing:border-box}body{margin:0;background:#f2f5fb;color:#20314b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:22px 15px 50px}.wrap{max-width:650px;margin:auto}h1{text-align:center;color:#2563d9;font-size:26px;margin:16px 0 5px}.sub{text-align:center;color:#687b95;margin-bottom:22px}.card{background:white;padding:20px;border-radius:17px;box-shadow:0 3px 15px #182b490a;margin:14px 0}h3{margin:0 0 14px}.langs,.actions{display:flex;gap:10px}.langs label{flex:1;border:2px solid #dce5f3;border-radius:12px;padding:13px 7px;text-align:center}.langs label:has(input:checked){background:#edf3ff;border-color:#2563d9}button{border:0;border-radius:11px;padding:14px 12px;font:inherit;font-weight:600;cursor:pointer}button:disabled{opacity:.5}.actions button{flex:1}.primary{background:#2563d9;color:white}.stop{background:#d83d3d;color:white}.test{background:#e8efff;color:#2459b9;width:100%;margin-top:13px}.panel{background:#f5f8ff;border-radius:12px;padding:15px;min-height:90px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}.status{font-size:14px;color:#556b87;line-height:1.6;margin-top:14px;overflow-wrap:anywhere}.note{color:#75849a;font-size:13px;line-height:1.6}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#aab5c4;margin-right:6px}.dot.on{background:#18a66a}.translation{border-bottom:1px solid #e0e8f3;padding:10px 0}.translation:last-child{border-bottom:0}.source{font-size:13px;color:#65758d}.thai{font-size:19px;margin-top:5px}.footer{text-align:center;color:#7a8a9e;font-size:12px;margin-top:20px}
 </style>
 </head>
 <body><main class="wrap">
-<h1>🎙️ Real-Time Translator</h1><div class="sub">English / Japanese → Thai · Microphone Test</div>
+<h1>🎙️ Real-Time Translator</h1><div class="sub">English / Japanese → Thai · Live Translation</div>
 <section class="card"><h3>เลือกภาษาของผู้พูด</h3><div class="langs"><label><input type="radio" name="lang" value="en-US" checked> 🇬🇧 English</label><label><input type="radio" name="lang" value="ja-JP"> 🇯🇵 Japanese</label></div>
 <button class="test" id="testBtn">🎤 Test Microphone</button><div class="actions" style="margin-top:12px"><button class="primary" id="startBtn">▶ Start</button><button class="stop" id="stopBtn" disabled>■ Stop</button></div>
 <div class="status"><span class="dot" id="dot"></span><span id="status">พร้อมทดสอบไมโครโฟน</span></div><p class="note">โปรดเปิดเว็บไซต์ด้วย Safari โดยตรง ไม่ใช่เบราว์เซอร์ภายในแอปอื่น และอนุญาตไมโครโฟนเมื่อระบบถาม</p></section>
 <section class="card"><h3>🎧 ข้อความที่ตรวจจับได้</h3><div class="panel" id="transcript">ยังไม่มีข้อความ</div><button class="test" id="clearBtn">🗑 ล้างข้อความ</button></section>
-<section class="card"><h3>🇹🇭 คำแปลภาษาไทย</h3><div class="panel">ขั้นตอนถัดไป: เชื่อมระบบแปลภาษา หลังทดสอบการรับเสียงสำเร็จ</div></section>
-<div class="footer">GitHub Pages · HTTPS · Test version 1</div>
+<section class="card"><h3>🇹🇭 คำแปลภาษาไทย</h3><div class="panel" id="translation">คำแปลภาษาไทยจะปรากฏที่นี่</div><div class="status" id="translateStatus">พร้อมแปลภาษา</div><button class="test" id="copyBtn">📋 คัดลอกคำแปล</button></section>
+<div class="footer">GitHub Pages · HTTPS · Thai Translation v2</div>
 </main>
 <script>
 const $=id=>document.getElementById(id);
 const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
 let recognition=null,wanted=false,restartTimer=null,finalText='';
+const API='https://script.google.com/macros/s/AKfycbxz0tEWQlihBOyY6zGfxWhYrOQbAYGKHgt1cPMurgLH28zkxVSrvPSE980Mwk73OWcjng/exec';
+let queue=[],translating=false,translated=[],generation=0,seq=0;
+function translateJSONP(text,lang){
+ return new Promise((resolve,reject)=>{
+   const name='rtCallback_'+Date.now()+'_'+(++seq);
+   const script=document.createElement('script');
+   let finished=false;
+   const cleanup=()=>{clearTimeout(timer);script.remove();try{delete window[name]}catch(e){window[name]=undefined}};
+   const finish=(err,data)=>{if(finished)return;finished=true;cleanup();err?reject(err):resolve(data)};
+   const timer=setTimeout(()=>finish(new Error('หมดเวลารอคำแปล (20 วินาที)')),20000);
+   window[name]=data=>finish(null,data);
+   script.onerror=()=>finish(new Error('เชื่อมต่อระบบแปลไม่ได้ กรุณาตรวจสอบ Deployment'));
+   script.src=API+'?callback='+encodeURIComponent(name)+'&lang='+encodeURIComponent(lang)+'&text='+encodeURIComponent(text);
+   document.head.appendChild(script);
+ });
+}
+function enqueueTranslation(text,lang){queue.push({text,lang,generation});drainTranslations()}
+async function drainTranslations(){
+ if(translating||!queue.length)return;
+ translating=true;
+ const item=queue.shift();
+ $('translateStatus').textContent='⏳ กำลังแปลภาษา... (รออีก '+queue.length+' ประโยค)';
+ try{
+   const r=await translateJSONP(item.text,item.lang);
+   if(item.generation===generation){
+     if(!r||r.success!==true)throw new Error(r?.error||'ผลลัพธ์ไม่ถูกต้อง');
+     translated.push({source:item.text,thai:String(r.translated)});
+     renderTranslation(item.text,String(r.translated));
+     $('translateStatus').textContent='✅ แปลเรียบร้อย';
+   }
+ }catch(e){if(item.generation===generation){renderTranslation(item.text,'⚠️ '+e.message);$('translateStatus').textContent='❌ '+e.message}}
+ finally{translating=false;drainTranslations()}
+}
+function renderTranslation(source,thai){
+ const parent=$('translation');if(!parent.dataset.hasItems){parent.textContent='';parent.dataset.hasItems='1'}
+ const div=document.createElement('div');div.className='translation';
+ const a=document.createElement('div');a.className='source';a.textContent=source;
+ const b=document.createElement('div');b.className='thai';b.textContent=thai;
+ div.append(a,b);parent.appendChild(div);div.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+$('copyBtn').onclick=async()=>{if(!translated.length){$('translateStatus').textContent='ยังไม่มีคำแปล';return}try{await navigator.clipboard.writeText(translated.map(x=>x.thai).join('\n'));$('translateStatus').textContent='คัดลอกคำแปลแล้ว'}catch(e){$('translateStatus').textContent='คัดลอกไม่ได้ กรุณาเลือกข้อความเอง'}};
+
 function setStatus(s){$('status').textContent=s;}
 function buttons(){ $('startBtn').disabled=wanted;$('stopBtn').disabled=!wanted;$('dot').classList.toggle('on',wanted); }
 function stop(){wanted=false;clearTimeout(restartTimer);restartTimer=null;if(recognition){try{recognition.stop()}catch(e){} recognition=null;}buttons();setStatus('หยุดรับเสียงแล้ว');}
 $('testBtn').onclick=async()=>{setStatus('กำลังขอสิทธิ์ไมโครโฟน...');if(!navigator.mediaDevices?.getUserMedia){setStatus('❌ เบราว์เซอร์ไม่รองรับ getUserMedia หรือไม่ใช่ HTTPS');return;}try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});setStatus('✅ ไมโครโฟนใช้งานได้ ('+stream.getAudioTracks().length+' audio track)');stream.getTracks().forEach(t=>t.stop());}catch(e){setStatus('❌ '+e.name+': '+e.message);}};
-function listen(){if(!wanted)return;recognition=new Recognition();const current=recognition;recognition.lang=document.querySelector('input[name="lang"]:checked').value;recognition.continuous=true;recognition.interimResults=true;recognition.onstart=()=>setStatus('🟢 กำลังฟังเสียง...');recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.trim();if(e.results[i].isFinal){if(t)finalText+=(finalText?'\n':'')+t;}else interim+=t+' ';}$('transcript').textContent=finalText+(interim?'\n… '+interim.trim():'')||'กำลังรอฟังเสียง...';};recognition.onerror=e=>{setStatus('❌ Speech Recognition: '+e.error);if(['not-allowed','service-not-allowed','audio-capture','language-not-supported'].includes(e.error)){wanted=false;buttons();}};recognition.onend=()=>{if(recognition!==current)return;recognition=null;if(wanted){setStatus('การฟังหยุดชั่วคราว กำลังลองเริ่มใหม่...');restartTimer=setTimeout(listen,900);}};try{recognition.start();}catch(e){wanted=false;buttons();setStatus('❌ '+e.message);}}
+function listen(){if(!wanted)return;recognition=new Recognition();const current=recognition;recognition.lang=document.querySelector('input[name="lang"]:checked').value;recognition.continuous=true;recognition.interimResults=true;recognition.onstart=()=>setStatus('🟢 กำลังฟังเสียง...');recognition.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.trim();if(e.results[i].isFinal){if(t){finalText+=(finalText?'\n':'')+t;enqueueTranslation(t,document.querySelector('input[name="lang"]:checked').value.slice(0,2));}}else interim+=t+' ';}$('transcript').textContent=finalText+(interim?'\n… '+interim.trim():'')||'กำลังรอฟังเสียง...';};recognition.onerror=e=>{setStatus('❌ Speech Recognition: '+e.error);if(['not-allowed','service-not-allowed','audio-capture','language-not-supported'].includes(e.error)){wanted=false;buttons();}};recognition.onend=()=>{if(recognition!==current)return;recognition=null;if(wanted){setStatus('การฟังหยุดชั่วคราว กำลังลองเริ่มใหม่...');restartTimer=setTimeout(listen,900);}};try{recognition.start();}catch(e){wanted=false;buttons();setStatus('❌ '+e.message);}}
 $('startBtn').onclick=()=>{if(!Recognition){setStatus('❌ Safari เวอร์ชันนี้ไม่มี Speech Recognition API');return;}if(wanted)return;wanted=true;buttons();setStatus('กำลังเริ่มรับเสียง...');listen();};
 $('stopBtn').onclick=stop;
-$('clearBtn').onclick=()=>{finalText='';$('transcript').textContent='ยังไม่มีข้อความ';};
+$('clearBtn').onclick=()=>{finalText='';$('transcript').textContent='ยังไม่มีข้อความ';generation++;queue=[];translated=[];$('translation').textContent='คำแปลภาษาไทยจะปรากฏที่นี่';delete $('translation').dataset.hasItems;$('translateStatus').textContent='ล้างข้อความแล้ว';};
 document.querySelectorAll('input[name="lang"]').forEach(el=>el.addEventListener('change',()=>{if(wanted){stop();setStatus('เปลี่ยนภาษาแล้ว กด Start อีกครั้ง');}}));
 window.addEventListener('pagehide',stop);
 </script></body></html>
